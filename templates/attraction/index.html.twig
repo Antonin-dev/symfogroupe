@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nos attractions - Jurassic World{% endblock %}
+
+{% block body %}
+   <div class="row">
+        <div class="col-md-12">
+            <h1 class="text-center">Nos Attractions</h1>
+
+            <div class="row product-container justify-content-center">
+                {% for attraction in attractions %}
+                    <div class="card col-5 text-white bg-danger ml-1 mt-1" style="width: 18rem;">
+                        <img src="/uploads/{{attraction.image}}" class="card-img-top mt-1" height="300px" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">{{attraction.nom}}</h5>
+                            <p class="card-text">{{attraction.soustitre}}</p>
+                        </div>
+                        
+                        <div class="card-body">
+                            <button type="button" class="btn btn-warning btn-block"><a href="{{ path('attraction_detail', {'slug' : attraction.slug}) }}" class="card-link">Card link</a></button>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    
+{% endblock %}
